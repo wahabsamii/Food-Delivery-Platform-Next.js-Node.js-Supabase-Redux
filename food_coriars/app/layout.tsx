@@ -1,7 +1,5 @@
 import './globals.css';
 import { Outfit } from 'next/font/google';
-import Providers from './providers';
-import { ToastContainer } from 'react-toastify';
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -25,14 +23,17 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }) {
+import type { ReactNode } from "react";
+
+export default function RootLayout({
+  children,
+}: {
+  children: ReactNode;
+}) {
   return (
     <html lang="en">
       <body className={`${outfit.className} bg-gray-50 text-gray-900`}>
-        <Providers>
-          <ToastContainer />
-          {children}
-        </Providers>
+        {children}
       </body>
     </html>
   );
